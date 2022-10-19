@@ -73,7 +73,8 @@ struct TaskEditView: View {
                                     
                                     if scheduleDate {
                                         Button{
-                                            
+                                            pkDate.toggle()
+                                            pkTime = false
                                         }label: {
                                             Text(dueDate, style: .date)
                                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -116,7 +117,8 @@ struct TaskEditView: View {
                                     
                                     if scheduleTime {
                                         Button{
-                                            
+                                            pkDate = false
+                                            pkTime.toggle()
                                         }label: {
                                             Text(dueDate, style: .time)
                                                 .frame(maxWidth: .infinity, alignment: .leading)

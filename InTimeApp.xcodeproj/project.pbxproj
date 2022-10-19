@@ -20,6 +20,9 @@
 		D085126B28FF2203003FC6E4 /* TaskEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D085126A28FF2203003FC6E4 /* TaskEditView.swift */; };
 		D085126D28FF221A003FC6E4 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D085126C28FF221A003FC6E4 /* FloatingButton.swift */; };
 		D085127128FF49E0003FC6E4 /* DateHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D085127028FF49E0003FC6E4 /* DateHolder.swift */; };
+		D085127329000AC1003FC6E4 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D085127229000AC1003FC6E4 /* TaskCell.swift */; };
+		D085127529000E5B003FC6E4 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D085127429000E5B003FC6E4 /* CheckBox.swift */; };
+		D08512772900113F003FC6E4 /* TaskItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08512762900113F003FC6E4 /* TaskItemExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 		D085126A28FF2203003FC6E4 /* TaskEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditView.swift; sourceTree = "<group>"; };
 		D085126C28FF221A003FC6E4 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		D085127028FF49E0003FC6E4 /* DateHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHolder.swift; sourceTree = "<group>"; };
+		D085127229000AC1003FC6E4 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		D085127429000E5B003FC6E4 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		D08512762900113F003FC6E4 /* TaskItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItemExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +165,7 @@
 		D085126E28FF31EC003FC6E4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D08512762900113F003FC6E4 /* TaskItemExtension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -166,7 +173,9 @@
 		D085126F28FF3207003FC6E4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D085127229000AC1003FC6E4 /* TaskCell.swift */,
 				D085126C28FF221A003FC6E4 /* FloatingButton.swift */,
+				D085127429000E5B003FC6E4 /* CheckBox.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -302,12 +311,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D085124128FF1D92003FC6E4 /* Persistence.swift in Sources */,
+				D08512772900113F003FC6E4 /* TaskItemExtension.swift in Sources */,
 				D085124428FF1D92003FC6E4 /* InTimeApp.xcdatamodeld in Sources */,
 				D085126D28FF221A003FC6E4 /* FloatingButton.swift in Sources */,
 				D085126928FF21F9003FC6E4 /* TaskListView.swift in Sources */,
+				D085127529000E5B003FC6E4 /* CheckBox.swift in Sources */,
 				D085126B28FF2203003FC6E4 /* TaskEditView.swift in Sources */,
 				D085123A28FF1D91003FC6E4 /* ContentView.swift in Sources */,
 				D085123828FF1D91003FC6E4 /* InTimeAppApp.swift in Sources */,
+				D085127329000AC1003FC6E4 /* TaskCell.swift in Sources */,
 				D085127128FF49E0003FC6E4 /* DateHolder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
