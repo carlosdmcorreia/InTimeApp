@@ -195,6 +195,7 @@ struct TaskEditView: View {
             selectedTaskItem?.dueDate = dueDate
             selectedTaskItem?.scheduleTime = scheduleTime
             selectedTaskItem?.scheduleDate = scheduleDate
+            selectedTaskItem?.flag = flag
             
             dateHolder.saveContext(viewContext)
             

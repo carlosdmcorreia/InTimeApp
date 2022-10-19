@@ -11,13 +11,8 @@ import CoreData
 struct TaskListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var dateHolder: DateHolder
-
-    /*
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \TaskItem.dueDate, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<TaskItem>
-    */
+    
+    @State var selectedFilter = TaskFilter.All
     
     @State private var showTaskEditView = false
     @State private var showCompleted: Bool = false
@@ -27,12 +22,12 @@ struct TaskListView: View {
             VStack {
                 ZStack(alignment: .bottom) {
                     List {
-                        ForEach(dateHolder.taskItems) { taskItem in
+                        ForEach(filteredTaskItems()) { taskItem in
                             if !taskItem.isCompleted() {
                                 TaskCell(passedTaskItem: taskItem)
                                     .environmentObject(dateHolder)
                             }
-                            if showCompleted {
+                            if showCompleted || selectedFilter == TaskFilter.OnlyCompleted {
                                 if taskItem.isCompleted(){
                                     TaskCell(passedTaskItem: taskItem)
                                         .environmentObject(dateHolder)
@@ -45,18 +40,27 @@ struct TaskListView: View {
                         .listRowInsets(EdgeInsets())
                     }
                     .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
+                        ToolbarItem(placement: .confirmationAction) {
+                            Picker("Picker", selection: $selectedFilter.animation()){
+                                ForEach(TaskFilter.allFilters, id: \.self){ filter in
+                                    Text(filter.rawValue)
+                                }
+                            }
+                            .pickerStyle(.menu)
+                        }
+                        
+                        ToolbarItem(placement: .confirmationAction) {
                             Button {
                                 withAnimation{
                                     showCompleted.toggle()
                                 }
                             } label: {
-                                Image(systemName: "line.3.horizontal.decrease.circle")
+                                Image(systemName: !showCompleted ? "line.3.horizontal.decrease.circle" : "line.3.horizontal.decrease.circle.fill")
                                     .font(.title3)
                             }
-                            
                         }
                     }
+                    
                     FloatingButton()
                         .environmentObject(dateHolder)
                 }
@@ -66,9 +70,29 @@ struct TaskListView: View {
         }
     }
     
+    private func filteredTaskItems() -> [TaskItem] {
+        if selectedFilter == TaskFilter.Today {
+            return dateHolder.taskItems.filter{$0.isToday()}
+        }
+        if selectedFilter == TaskFilter.Schedule {
+            return dateHolder.taskItems.filter{$0.scheduleDate}
+        }
+        if selectedFilter == TaskFilter.OverDue {
+            return dateHolder.taskItems.filter{$0.isOverdue()}
+        }
+        if selectedFilter == TaskFilter.Flagged {
+            return dateHolder.taskItems.filter{$0.flag}
+        }
+        if selectedFilter == TaskFilter.OnlyCompleted {
+            return dateHolder.taskItems.filter{$0.isCompleted()}
+        }
+        
+        return dateHolder.taskItems
+    }
+    
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { dateHolder.taskItems[$0] }.forEach(viewContext.delete)
+            offsets.map { filteredTaskItems()[$0] }.forEach(viewContext.delete)
             dateHolder.saveContext(viewContext)
         }
     }

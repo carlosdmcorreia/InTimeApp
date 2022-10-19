@@ -32,23 +32,32 @@ struct TaskCell: View {
             }
             .padding(.horizontal, 5)
             Spacer()
-            if passedTaskItem.scheduleDate{
-                if passedTaskItem.scheduleTime {
-                    Text(passedTaskItem.dueDateHour())
+            
+            VStack(alignment: .trailing) {
+                if passedTaskItem.flag {
+                    Image(systemName: "flag.fill")
+                        .foregroundColor(.orange)
                         .font(.footnote)
-                        .foregroundColor(passedTaskItem.overDueColor())
-                } else {
-                    Text(passedTaskItem.dueDateOnly())
-                        .font(.footnote)
-                        .foregroundColor(passedTaskItem.overDueColor())
+                }
+                if passedTaskItem.scheduleDate{
+                    if passedTaskItem.scheduleTime {
+                        Text(passedTaskItem.dueDateHour())
+                            .font(.footnote)
+                            .foregroundColor(passedTaskItem.overDueColor())
+                    } else {
+                        Text(passedTaskItem.dueDateOnly())
+                            .font(.footnote)
+                            .foregroundColor(passedTaskItem.overDueColor())
+                    }
                 }
             }
+            
             Image(systemName: "info.circle")
                 .foregroundColor(.accentColor)
                 .font(.title3)
                 .onTapGesture {
                     showTaskEditView.toggle()
-                }            
+                }
             
         }
         .frame(height: 40)

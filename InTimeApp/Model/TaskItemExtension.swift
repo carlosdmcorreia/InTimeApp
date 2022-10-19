@@ -19,6 +19,14 @@ extension TaskItem{
         return false
     }
     
+    func isToday() -> Bool {
+        let cal = Calendar.current
+        if scheduleDate {
+            return cal.isDate(dueDate ?? Date(), inSameDayAs: .now)   
+        }
+        return false
+    }
+    
     func overDueColor() -> Color {
         if isCompleted() {
             return .secondary

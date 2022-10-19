@@ -23,6 +23,7 @@
 		D085127329000AC1003FC6E4 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D085127229000AC1003FC6E4 /* TaskCell.swift */; };
 		D085127529000E5B003FC6E4 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D085127429000E5B003FC6E4 /* CheckBox.swift */; };
 		D08512772900113F003FC6E4 /* TaskItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08512762900113F003FC6E4 /* TaskItemExtension.swift */; };
+		D0851279290069FA003FC6E4 /* TaskFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0851278290069FA003FC6E4 /* TaskFilter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		D085127229000AC1003FC6E4 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		D085127429000E5B003FC6E4 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		D08512762900113F003FC6E4 /* TaskItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItemExtension.swift; sourceTree = "<group>"; };
+		D0851278290069FA003FC6E4 /* TaskFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFilter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				D08512762900113F003FC6E4 /* TaskItemExtension.swift */,
+				D0851278290069FA003FC6E4 /* TaskFilter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				D08512772900113F003FC6E4 /* TaskItemExtension.swift in Sources */,
 				D085124428FF1D92003FC6E4 /* InTimeApp.xcdatamodeld in Sources */,
 				D085126D28FF221A003FC6E4 /* FloatingButton.swift in Sources */,
+				D0851279290069FA003FC6E4 /* TaskFilter.swift in Sources */,
 				D085126928FF21F9003FC6E4 /* TaskListView.swift in Sources */,
 				D085127529000E5B003FC6E4 /* CheckBox.swift in Sources */,
 				D085126B28FF2203003FC6E4 /* TaskEditView.swift in Sources */,
