@@ -35,7 +35,7 @@ class DateHolder: ObservableObject {
         let dateSort = NSSortDescriptor(keyPath: \TaskItem.scheduleTime, ascending: true)
         let dueDateSort = NSSortDescriptor(keyPath: \TaskItem.dueDate, ascending: true)
         
-        return [completedDateSort, dateSort, dueDateSort]
+        return [completedDateSort, dueDateSort, dateSort]
     }
     
     func saveContext(_ context:  NSManagedObjectContext) {

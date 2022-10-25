@@ -9,9 +9,14 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    @AppStorage("appFisrtLaunch") var appFisrtLaunch: Bool = true
     
     var body: some View {
-        TaskListView()
+        if appFisrtLaunch {
+            FirstLaunchView(appFisrtLaunch: appFisrtLaunch)
+        } else {
+            TaskListView()
+        }
     }
 }
 

@@ -39,6 +39,7 @@ struct TaskListView: View {
                         .listRowBackground(Color.clear)
                         .listRowInsets(EdgeInsets())
                     }
+                    .background(Color.clear)
                     .toolbar {
                         ToolbarItem(placement: .confirmationAction) {
                             Picker("Picker", selection: $selectedFilter.animation()){
@@ -65,8 +66,11 @@ struct TaskListView: View {
                         .environmentObject(dateHolder)
                 }
             }
-            .navigationTitle("All")
+            .navigationTitle("Reminders")
             .padding(.vertical)
+        }
+        .onAppear {
+            UIApplication.shared.applicationIconBadgeNumber = 0
         }
     }
     
@@ -91,6 +95,12 @@ struct TaskListView: View {
     }
     
     private func deleteItems(offsets: IndexSet) {
+        let tasksToDelete = offsets.map { filteredTaskItems()[$0] }
+        
+        // Remove notifications
+        tasksToDelete.forEach { task in UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [task.notificationID!])
+        }
+
         withAnimation {
             offsets.map { filteredTaskItems()[$0] }.forEach(viewContext.delete)
             dateHolder.saveContext(viewContext)

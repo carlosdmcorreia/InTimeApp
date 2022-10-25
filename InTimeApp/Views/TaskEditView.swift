@@ -25,6 +25,8 @@ struct TaskEditView: View {
     @State var pkDate: Bool = false
     @State var pkTime: Bool = false
     
+    @State var notificationID: String
+    
     init(passedTaskItem: TaskItem?, initialDate: Date){
         if let taskItem = passedTaskItem{
             // EDIT MODE
@@ -36,6 +38,7 @@ struct TaskEditView: View {
             _scheduleTime = State(initialValue: taskItem.scheduleTime)
             _scheduleDate = State(initialValue: taskItem.scheduleDate)
             _flag = State(initialValue: taskItem.flag)
+            _notificationID = State(initialValue: taskItem.notificationID ?? "")
         } else {
             _name = State(initialValue: "")
             _notes = State(initialValue: "")
@@ -44,6 +47,7 @@ struct TaskEditView: View {
             _scheduleTime = State(initialValue: false)
             _scheduleDate = State(initialValue: false)
             _flag = State(initialValue: false)
+            _notificationID = State(initialValue: UUID().uuidString)
         }
     }
     
@@ -162,6 +166,7 @@ struct TaskEditView: View {
                         }
                         .padding(.vertical, 5)
                     }
+                    
                 }
                 .navigationBarTitle("Details", displayMode: .inline)
                 .navigationBarItems(
@@ -196,6 +201,11 @@ struct TaskEditView: View {
             selectedTaskItem?.scheduleTime = scheduleTime
             selectedTaskItem?.scheduleDate = scheduleDate
             selectedTaskItem?.flag = flag
+            selectedTaskItem?.notificationID = notificationID
+            
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notificationID])
+            
+            NotificationManager.instance.scheduleNotification(task: selectedTaskItem!)
             
             dateHolder.saveContext(viewContext)
             

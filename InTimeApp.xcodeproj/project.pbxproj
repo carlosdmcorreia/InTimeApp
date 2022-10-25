@@ -24,6 +24,8 @@
 		D085127529000E5B003FC6E4 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D085127429000E5B003FC6E4 /* CheckBox.swift */; };
 		D08512772900113F003FC6E4 /* TaskItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08512762900113F003FC6E4 /* TaskItemExtension.swift */; };
 		D0851279290069FA003FC6E4 /* TaskFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0851278290069FA003FC6E4 /* TaskFilter.swift */; };
+		D085127B29016C21003FC6E4 /* FirstLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D085127A29016C20003FC6E4 /* FirstLaunchView.swift */; };
+		D085127D29018029003FC6E4 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D085127C29018029003FC6E4 /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		D085127429000E5B003FC6E4 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		D08512762900113F003FC6E4 /* TaskItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItemExtension.swift; sourceTree = "<group>"; };
 		D0851278290069FA003FC6E4 /* TaskFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFilter.swift; sourceTree = "<group>"; };
+		D085127A29016C20003FC6E4 /* FirstLaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchView.swift; sourceTree = "<group>"; };
+		D085127C29018029003FC6E4 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +128,6 @@
 				D085124528FF1D92003FC6E4 /* Info.plist */,
 				D085124228FF1D92003FC6E4 /* InTimeApp.xcdatamodeld */,
 				D085123D28FF1D92003FC6E4 /* Preview Content */,
-				D085127028FF49E0003FC6E4 /* DateHolder.swift */,
 			);
 			path = InTimeApp;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 				D085123928FF1D91003FC6E4 /* ContentView.swift */,
 				D085126828FF21F9003FC6E4 /* TaskListView.swift */,
 				D085126A28FF2203003FC6E4 /* TaskEditView.swift */,
+				D085127A29016C20003FC6E4 /* FirstLaunchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -167,8 +171,10 @@
 		D085126E28FF31EC003FC6E4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D085127028FF49E0003FC6E4 /* DateHolder.swift */,
 				D08512762900113F003FC6E4 /* TaskItemExtension.swift */,
 				D0851278290069FA003FC6E4 /* TaskFilter.swift */,
+				D085127C29018029003FC6E4 /* NotificationManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -317,6 +323,8 @@
 				D08512772900113F003FC6E4 /* TaskItemExtension.swift in Sources */,
 				D085124428FF1D92003FC6E4 /* InTimeApp.xcdatamodeld in Sources */,
 				D085126D28FF221A003FC6E4 /* FloatingButton.swift in Sources */,
+				D085127D29018029003FC6E4 /* NotificationManager.swift in Sources */,
+				D085127B29016C21003FC6E4 /* FirstLaunchView.swift in Sources */,
 				D0851279290069FA003FC6E4 /* TaskFilter.swift in Sources */,
 				D085126928FF21F9003FC6E4 /* TaskListView.swift in Sources */,
 				D085127529000E5B003FC6E4 /* CheckBox.swift in Sources */,
