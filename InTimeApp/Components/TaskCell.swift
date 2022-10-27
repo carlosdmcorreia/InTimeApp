@@ -17,6 +17,7 @@ struct TaskCell: View {
         HStack(alignment: .center){
             CheckBox(passedTaskItem: passedTaskItem)
                 .environmentObject(dateHolder)
+                .padding()
             
             VStack(alignment: .leading){
                 Text(passedTaskItem.name ?? "")
@@ -53,6 +54,7 @@ struct TaskCell: View {
             }
             
             Image(systemName: "info.circle")
+                .padding()
                 .foregroundColor(.accentColor)
                 .font(.title3)
                 .onTapGesture {

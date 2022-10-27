@@ -28,6 +28,7 @@ struct TaskEditView: View {
     @State var notificationID: String
     
     init(passedTaskItem: TaskItem?, initialDate: Date){
+           
         if let taskItem = passedTaskItem{
             // EDIT MODE
             _selectedTaskItem = State(initialValue: taskItem)
@@ -52,10 +53,10 @@ struct TaskEditView: View {
     }
     
     var body: some View {
-            NavigationView {
-                Form{
-                    
-                    Section{
+        NavigationView {
+            ZStack {
+                List {
+                    Section {
                         TextField("Title", text: $name)
                         TextField("Notes", text: $notes)
                         TextField("URL", text: $link)
@@ -149,8 +150,8 @@ struct TaskEditView: View {
                                 .datePickerStyle(WheelDatePickerStyle())
                         }
                     }
-                    
-                    Section{
+                
+                    Section {
                         Toggle(isOn: $flag){
                             HStack{
                                 Image(systemName: "flag.fill")
@@ -166,8 +167,8 @@ struct TaskEditView: View {
                         }
                         .padding(.vertical, 5)
                     }
-                    
                 }
+                .animation(Animation.linear(duration: 0.5), value: [scheduleDate, scheduleTime, pkTime, pkDate])
                 .navigationBarTitle("Details", displayMode: .inline)
                 .navigationBarItems(
                     leading: Button{
@@ -180,36 +181,39 @@ struct TaskEditView: View {
                         Button("OK", action: saveAction)
                         .bold()
                         .frame(maxWidth: .infinity, alignment: .trailing)
+                        .disabled(name.isEmpty)
                 )
-                .cornerRadius(30)
-                .animation(Animation.linear(duration: 0.5), value: [scheduleDate, scheduleTime, pkTime, pkDate])
             }
+        }
+            
     }
     
     func saveAction(){
         withAnimation {
             
-            if selectedTaskItem == nil {
-                selectedTaskItem = TaskItem(context: viewContext)
+            if(name != ""){
+                if selectedTaskItem == nil {
+                    selectedTaskItem = TaskItem(context: viewContext)
+                }
+                
+                selectedTaskItem?.created = Date()
+                selectedTaskItem?.name = name
+                selectedTaskItem?.notes = notes
+                selectedTaskItem?.link = link
+                selectedTaskItem?.dueDate = dueDate
+                selectedTaskItem?.scheduleTime = scheduleTime
+                selectedTaskItem?.scheduleDate = scheduleDate
+                selectedTaskItem?.flag = flag
+                selectedTaskItem?.notificationID = notificationID
+                
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notificationID])
+                
+                NotificationManager.instance.scheduleNotification(task: selectedTaskItem!)
+                
+                dateHolder.saveContext(viewContext)
+                
+                self.presentationMode.wrappedValue.dismiss()
             }
-            
-            selectedTaskItem?.created = Date()
-            selectedTaskItem?.name = name
-            selectedTaskItem?.notes = notes
-            selectedTaskItem?.link = link
-            selectedTaskItem?.dueDate = dueDate
-            selectedTaskItem?.scheduleTime = scheduleTime
-            selectedTaskItem?.scheduleDate = scheduleDate
-            selectedTaskItem?.flag = flag
-            selectedTaskItem?.notificationID = notificationID
-            
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notificationID])
-            
-            NotificationManager.instance.scheduleNotification(task: selectedTaskItem!)
-            
-            dateHolder.saveContext(viewContext)
-            
-            self.presentationMode.wrappedValue.dismiss()
         }
     }
 }

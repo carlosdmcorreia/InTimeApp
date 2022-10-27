@@ -20,7 +20,11 @@ struct TaskListView: View {
     var body: some View {
         NavigationView {
             VStack {
-                ZStack(alignment: .bottom) {
+                if filteredTaskItems().isEmpty {
+                    Spacer()
+                    Text("\(selectedFilter.rawValue) tasks completed")
+                        .foregroundColor(Color.gray)
+                } else {
                     List {
                         ForEach(filteredTaskItems()) { taskItem in
                             if !taskItem.isCompleted() {
@@ -39,6 +43,7 @@ struct TaskListView: View {
                         .listRowBackground(Color.clear)
                         .listRowInsets(EdgeInsets())
                     }
+                    .listStyle(.plain)
                     .background(Color.clear)
                     .toolbar {
                         ToolbarItem(placement: .confirmationAction) {
@@ -61,10 +66,11 @@ struct TaskListView: View {
                             }
                         }
                     }
-                    
-                    FloatingButton()
-                        .environmentObject(dateHolder)
                 }
+                Spacer()
+                FloatingButton()
+                    .environmentObject(dateHolder)
+                
             }
             .navigationTitle("Reminders")
             .padding(.vertical)
@@ -72,6 +78,7 @@ struct TaskListView: View {
         .onAppear {
             UIApplication.shared.applicationIconBadgeNumber = 0
         }
+        
     }
     
     private func filteredTaskItems() -> [TaskItem] {
